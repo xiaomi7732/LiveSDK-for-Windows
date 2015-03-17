@@ -36,7 +36,7 @@ namespace Microsoft.Live
 
     public partial class LiveAuthClient
     {
-        private const string SignInOfferName = "wl.signin";
+        private const string SignInOfferName = LiveScopes.Signin;
         private List<string> currentScopes;
         private ThemeType? theme;
 

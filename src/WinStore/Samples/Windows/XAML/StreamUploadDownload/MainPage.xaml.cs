@@ -43,7 +43,11 @@ namespace StreamUploadDownload
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private static readonly string[] scopes = new string[]{"wl.signin", "wl.basic", "wl.skydrive_update"};
+        private static readonly string[] scopes = new string[]{
+            LiveScopes.Signin,
+            LiveScopes.Basic,
+            LiveScopes.SkydriveUpdate
+        };
 
         private LiveAuthClient authClient;
         private LiveConnectClient liveClient;
@@ -163,11 +167,11 @@ namespace StreamUploadDownload
                             (progress) => { this.progressBar.Value = progress.ProgressPercentage; });
 
                         this.cts = new CancellationTokenSource();
-                        LiveUploadOperation operation = 
+                        LiveUploadOperation operation =
                             await this.liveClient.CreateBackgroundUploadAsync(
-                                folderPath, 
-                                file.Name, 
-                                inStream, 
+                                folderPath,
+                                file.Name,
+                                inStream,
                                 OverwriteOption.Rename);
                         LiveOperationResult result = await operation.StartAsync(this.cts.Token, progressHandler);
 

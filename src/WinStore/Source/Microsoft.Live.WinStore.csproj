@@ -222,6 +222,7 @@ NOTE: This file will NOT build inside of CoreXT. The enlistment does not support
     <Compile Include="..\..\Common\Source\Public\LiveConnectClientTaskAsync.cs">
       <Link>Public\LiveConnectClientTaskAsync.cs</Link>
     </Compile>
+    <Compile Include="Public\LiveScopes.cs" />
     <Compile Include="Public\LiveUploadOperation.cs" />
     <Compile Include="Public\LiveDownloadOperation.cs" />
     <Compile Include="Public\LiveDownloadOperationResult.cs" />

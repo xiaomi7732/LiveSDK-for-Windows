@@ -54,7 +54,7 @@ namespace Microsoft.Live.UnitTests
 
             string clientId = "clientId";
             string refreshToken = "refreshToken";
-            IEnumerable<string> scopes = new string[]{ "wl.basic" };
+            IEnumerable<string> scopes = new string[]{ LiveScopes.Basic };
             SynchronizationContextWrapper syncContext = SynchronizationContextWrapper.Current;
 
             var refreshOperation =

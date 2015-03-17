@@ -41,7 +41,11 @@ namespace FileUploadDownload
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private static readonly string[] scopes = new string[]{ "wl.signin", "wl.basic", "wl.skydrive_update" };
+        private static readonly string[] scopes = new string[]{ 
+            LiveScopes.Signin,
+            LiveScopes.Basic,
+            LiveScopes.SkydriveUpdate
+        };
 
         private LiveAuthClient authClient;
         private LiveConnectClient liveClient;
@@ -160,12 +164,12 @@ namespace FileUploadDownload
                     this.cts = new CancellationTokenSource();
 
                     LiveUploadOperation operation = await this.liveClient.CreateBackgroundUploadAsync(
-                        folderPath, 
-                        file.Name, 
-                        file, 
+                        folderPath,
+                        file.Name,
+                        file,
                         OverwriteOption.Rename);
                     LiveOperationResult result = await operation.StartAsync(
-                        this.cts.Token, 
+                        this.cts.Token,
                         progressHandler);
 
                     dynamic fileData = result.Result;
@@ -207,13 +211,13 @@ namespace FileUploadDownload
                 roamingSettings.Values["FileName"] = this.fileName;
 
                 var appSettingContainer = roamingSettings.CreateContainer(
-                    "FileUploadDownload Settings", 
+                    "FileUploadDownload Settings",
                     ApplicationDataCreateDisposition.Always);
                 appSettingContainer.Values[this.fileName] = true;
 
                 var roamingFolder = ApplicationData.Current.RoamingFolder;
                 var storageDir = await roamingFolder.CreateFolderAsync(
-                    "FileUploadDownload sample", 
+                    "FileUploadDownload sample",
                     CreationCollisionOption.OpenIfExists);
 
                 var storageFile =
@@ -229,7 +233,7 @@ namespace FileUploadDownload
                     this.cts = new CancellationTokenSource();
 
                     LiveDownloadOperation operation = await this.liveClient.CreateBackgroundDownloadAsync(
-                        fileLink, 
+                        fileLink,
                         storageFile);
                     LiveDownloadOperationResult result = await operation.StartAsync(this.cts.Token, progressHandler);
 
