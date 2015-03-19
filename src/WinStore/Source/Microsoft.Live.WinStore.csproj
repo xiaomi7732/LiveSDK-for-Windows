@@ -236,6 +236,8 @@ NOTE: This file will NOT build inside of CoreXT. The enlistment does not support
     <Compile Include="Internal\Operations\TailoredUploadOperation.cs" />
     <Compile Include="Internal\Operations\CreateBackgroundDownloadOperation.cs" />
     <Compile Include="Internal\Operations\CreateBackgroundUploadOperation.cs" />
+    <Compile Include="Public\OM\Contact.cs" />
+    <Compile Include="Public\OM\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Resources.resw" />
